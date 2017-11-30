@@ -2,6 +2,7 @@ package com.example.jebus_vladimir.presion_arterial;
 
 import android.app.Activity;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -14,8 +15,14 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Random;
 
 /**
  * Created by Jebus on 28/11/2017.
@@ -23,36 +30,77 @@ import java.util.Date;
 
 public class Captura extends Activity {
     private EditText a, b;
+    private Calendar c;
+    private SimpleDateFormat sdf;
+    private int res;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_captura);
+        setContentView(R.layout.captura);
         a = (EditText) findViewById(R.id.user);
         b = (EditText) findViewById(R.id.pass);
+        sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        int val;
+
+
+        DataBase sistema = new DataBase(this, "app", null, 1);
+        SQLiteDatabase db = sistema.getWritableDatabase();
+        Random r = new Random();
+        String qu = "select * from lectura;";
+        Cursor fila = db.rawQuery(qu, null);
+        if (!fila.moveToFirst()) {
+            c = Calendar.getInstance();
+        }
+        else{
+            FileInputStream iS;
+            try {
+                iS = openFileInput("resta.txt");
+                Reader reader = new InputStreamReader(iS);
+                BufferedReader br = new BufferedReader( reader );
+                res = Integer.parseInt(br.readLine());
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+            c = Calendar.getInstance();
+            c.add(Calendar.DAY_OF_MONTH, res);
+            res--;
+            val = r.nextInt(183 - 67) + 67;
+            a.setText( Integer.toString(val) );
+            val = r.nextInt(123 - 47) + 47;
+            b.setText( Integer.toString(val) );
+            FileOutputStream oS;
+            try{
+                oS = openFileOutput("resta.txt", Context.MODE_PRIVATE);
+                oS.write(Integer.toString(res).getBytes());
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
     }
 
     public void cancelar(View v) {
         finish();
     }
 
-    public void aceptar(View v){
-        String aa= a.getText().toString().trim();
-        String bb= b.getText().toString().trim();
-        Calendar c = Calendar.getInstance();
-        DataBase sistema = new DataBase(this, "app", null, 1);
+    public void Aceptar(View v){
 
+        DataBase sistema = new DataBase(this, "app", null, 1);
         SQLiteDatabase db = sistema.getWritableDatabase();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String strDate = sdf.format(c.getTime());
         ContentValues inst = new ContentValues();
-        Toast.makeText(getApplicationContext(), strDate, Toast.LENGTH_LONG).show();
-        inst.put("fecha",strDate);
+        String aa, bb ,ti ;
+
+        aa = a.getText().toString().trim();
+        bb = b.getText().toString().trim();
+        ti = sdf.format(c.getTime());
+
+        //Toast.makeText(getApplicationContext(), ti, Toast.LENGTH_LONG).show();
+        inst.put("fecha",ti);
         inst.put("alta", aa );
         inst.put("baja", bb );
         long idT = db.insert("lectura", null, inst);
         //Toast.makeText(getApplicationContext(), "Fila:  " + idT, Toast.LENGTH_LONG).show();
 
-        if( Integer.valueOf(aa)>=160 || Integer.valueOf(bb)>=100  ) {
+        if( Integer.valueOf(aa)>=180 || Integer.valueOf(bb)>=120  ) {
             String qu = "select * from medico;";
             Cursor fila = db.rawQuery(qu, null);
             if (fila.moveToFirst()) {
@@ -70,7 +118,7 @@ public class Captura extends Activity {
                 }
             }
         }
-        finish();
+
     }
 }
 
