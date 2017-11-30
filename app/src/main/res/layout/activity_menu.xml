@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/new_login_gradients"
+    tools:context="com.example.jebus_vladimir.presion_arterial.MainActivity">
+
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        app:srcCompat="@drawable/logo"
+        android:layout_marginTop="26dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/resu2"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+
+        android:layout_alignLeft="@+id/resul"
+        android:layout_alignStart="@+id/resul"
+        android:layout_below="@+id/resul"
+        android:layout_marginTop="11dp"
+        android:background="#ffffff"
+        android:text="@string/resT"
+        android:textColor="#f16f7d"
+        android:textSize="18sp"
+        android:onClick="openTable"/>
+
+    <Button
+        android:id="@+id/resul"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+
+        android:layout_alignLeft="@+id/captu"
+        android:layout_alignStart="@+id/captu"
+        android:layout_below="@+id/captu"
+        android:layout_marginTop="11dp"
+        android:background="#df546e"
+
+        android:text="@string/resG"
+        android:textColor="#fff"
+        android:textSize="18sp"
+        android:onClick="openGraph"/>
+
+    <Button
+        android:id="@+id/captu"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="11dp"
+        android:background="#ffffff"
+
+        android:text="@string/cap"
+        android:textColor="#f16f7d"
+        android:textSize="18sp"
+        android:layout_below="@+id/textView5"
+        android:layout_centerHorizontal="true"
+        android:onClick="captura"/>
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="14dp"
+        android:text="Menú"
+        android:textAlignment="center"
+        android:textColor="#fff"
+        android:textSize="30sp"
+        android:layout_below="@+id/imageView"
+        android:layout_alignLeft="@+id/captu"
+        android:layout_alignStart="@+id/captu" />
+
+
+</RelativeLayout>

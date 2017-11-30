@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/new_login_gradients"
+    tools:context="com.example.jebus_vladimir.presion_arterial.MainActivity">
+
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        app:srcCompat="@drawable/logo"
+        android:layout_marginTop="41dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/resul"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+
+        android:layout_marginBottom="31dp"
+        android:background="#df546e"
+        android:text="@string/cancel"
+        android:textColor="#fff"
+        android:textSize="18sp"
+        android:onClick="cancelar"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/captu"
+        android:layout_alignStart="@+id/captu" />
+
+    <Button
+        android:id="@+id/captu"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:background="#ffffff"
+        android:text="@string/save"
+        android:textColor="#f16f7d"
+        android:textSize="18sp"
+        android:layout_marginBottom="15dp"
+        android:layout_above="@+id/resul"
+        android:layout_alignLeft="@+id/textView4"
+        android:layout_alignStart="@+id/textView4"
+        android:onClick="aceptar"/>
+
+    <EditText
+        android:id="@+id/user"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/textView4"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="17dp"
+        android:background="@color/transparent"
+        android:ems="10"
+        android:hint="@string/pSys"
+        android:inputType="textPersonName"
+        android:textColor="#fff"
+        android:textColorHint="#fff"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/pass"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_alignLeft="@+id/user"
+        android:layout_alignStart="@+id/user"
+        android:layout_below="@+id/user"
+        android:layout_marginTop="10dp"
+        android:background="@color/transparent"
+        android:ems="10"
+        android:hint="@string/pDis"
+        android:inputType="textPersonName"
+        android:textColor="#fff"
+        android:textColorHint="#fff"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="13dp"
+        android:text="@string/bloPresh"
+        android:textAlignment="center"
+        android:textColor="#fff"
+        android:textSize="30sp"
+        android:layout_below="@+id/imageView"
+        android:layout_centerHorizontal="true" />
+
+
+</RelativeLayout>

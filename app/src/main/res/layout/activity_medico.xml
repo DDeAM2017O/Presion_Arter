@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/new_login_gradients"
+    tools:context="com.example.jebus_vladimir.presion_arterial.MainActivity">
+
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="100dp"
+        android:layout_height="70dp"
+        android:layout_alignEnd="@+id/user"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/user"
+        android:layout_marginEnd="36dp"
+        android:layout_marginRight="36dp"
+        android:layout_marginTop="13dp"
+        app:srcCompat="@drawable/logo" />
+
+    <Button
+        android:id="@+id/resul"
+        android:layout_width="140dp"
+        android:layout_height="50dp"
+        android:background="#df546e"
+        android:text="@string/cancel"
+        android:textColor="#fff"
+        android:textSize="18sp"
+        android:layout_below="@+id/dir"
+        android:layout_alignLeft="@+id/dir"
+        android:layout_alignStart="@+id/dir"
+        android:layout_marginTop="45dp"
+        android:onClick="cancelar"/>
+
+
+    <Button
+        android:id="@+id/captu"
+        android:layout_width="140dp"
+        android:layout_height="50dp"
+        android:background="#ffffff"
+        android:text="@string/acept"
+        android:textColor="#f16f7d"
+        android:textSize="18sp"
+        android:layout_alignBottom="@+id/resul"
+        android:layout_alignRight="@+id/dir"
+        android:layout_alignEnd="@+id/dir"
+        android:layout_alignTop="@+id/resul"
+        android:onClick="aceptar"/>
+
+    <EditText
+        android:id="@+id/user"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/imageView2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="33dp"
+        android:background="@color/transparent"
+        android:ems="10"
+        android:hint="@string/name"
+        android:inputType="textPersonName"
+        android:textColorHint="#fff"
+        android:textSize="18sp"
+        android:textColor="#fff" />
+
+    <EditText
+        android:id="@+id/dir"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_alignLeft="@+id/name"
+        android:layout_alignStart="@+id/name"
+        android:layout_below="@+id/name"
+        android:layout_marginTop="11dp"
+        android:background="@color/transparent"
+        android:ems="10"
+        android:hint="@string/mail"
+        android:inputType="textPersonName"
+        android:textColorHint="#fff"
+        android:textSize="18sp"
+        android:textColor="#fff" />
+
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_alignLeft="@+id/pass"
+        android:layout_alignStart="@+id/pass"
+        android:layout_below="@+id/pass"
+        android:layout_marginTop="14dp"
+        android:background="@color/transparent"
+        android:ems="10"
+        android:hint="@string/phon"
+        android:inputType="textPersonName"
+        android:textColorHint="#fff"
+        android:textSize="18sp"
+        android:textColor="#fff" />
+
+    <EditText
+        android:id="@+id/pass"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_alignLeft="@+id/user"
+        android:layout_alignStart="@+id/user"
+        android:layout_below="@+id/user"
+        android:layout_marginTop="10dp"
+        android:background="@color/transparent"
+        android:ems="10"
+        android:hint="@string/office"
+        android:inputType="textPersonName"
+        android:textColorHint="#fff"
+        android:textSize="18sp"
+        android:textColor="#fff" />
+
+
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="130dp"
+        android:layout_height="60dp"
+        android:layout_alignLeft="@+id/user"
+        android:layout_alignStart="@+id/user"
+        android:layout_alignTop="@+id/imageView2"
+        android:layout_marginTop="13dp"
+        android:text="@string/sigUpD"
+        android:textColor="#fff"
+        android:textSize="24sp" />
+
+
+</RelativeLayout>

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/new_login_gradients"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -9,6 +11,14 @@
         android:layout_height="match_parent"
         android:layout_above="@+id/seekBar1" />
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        app:srcCompat="@drawable/logo"
+        android:layout_marginTop="41dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:id="@+id/timeLine"
@@ -22,7 +32,9 @@
         android:layout_alignRight="@+id/labelDays"
         android:layout_alignEnd="@+id/labelDays"
         android:gravity="start"
-        android:text="Time Line:" />
+        android:text="Time Line:"
+        android:textColor="#fff"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/labelDays"
@@ -35,6 +47,8 @@
         android:layout_alignBottom="@+id/seekBar2"
         android:gravity="start"
         android:text="Days to Graph:"
+        android:textColor="#fff"
+        android:textSize="18sp"
         />
 
     <SeekBar
