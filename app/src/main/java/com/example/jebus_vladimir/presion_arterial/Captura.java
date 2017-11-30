@@ -37,6 +37,8 @@ public class Captura extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.captura);
+        Intent intent = getIntent();
+        idPer = intent.getIntExtra("id",0);
         a = (EditText) findViewById(R.id.user);
         b = (EditText) findViewById(R.id.pass);
         sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -97,6 +99,7 @@ public class Captura extends Activity {
         inst.put("fecha",ti);
         inst.put("alta", aa );
         inst.put("baja", bb );
+        inst.put("autor",idPer);
         long idT = db.insert("lectura", null, inst);
         //Toast.makeText(getApplicationContext(), "Fila:  " + idT, Toast.LENGTH_LONG).show();
 

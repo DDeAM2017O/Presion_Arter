@@ -27,15 +27,17 @@ public class Login extends Activity {
     public void aceptar(View v){
         DataBase sistema = new DataBase(this, "app", null, 1);
         SQLiteDatabase db = sistema.getWritableDatabase();
-
+        int t;
         String u = a.getText().toString().trim();
         String p = b.getText().toString().trim();
         String qu = "select id from persona where user = '"+u+"' and pass = '"+p+"'";
         Cursor fila = db.rawQuery(qu, null);
         if (fila.moveToFirst()) {
+            t = fila.getInt( fila.getColumnIndex("id") );
             Toast.makeText(this, R.string.bienvenido, Toast.LENGTH_SHORT).show();
-            db.close();
             Intent intent = new Intent(Login.this, Menu.class);
+            intent.putExtra("id", t );
+            db.close();
             startActivity(intent);
             finish();
         } else {
