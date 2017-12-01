@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.icu.text.SimpleDateFormat;
 import android.os.Bundle;
 import android.telephony.SmsManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -20,58 +21,57 @@ import java.io.FileOutputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Random;
 
 public class CapturaLecturas extends Activity {
     private EditText a, b;
     private Calendar c;
     private SimpleDateFormat sdf;
-    private int res,idPer;
+    private int idPer;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_captura_lecturas);
+        setContentView(R.layout.activity_captura);
         Intent intent = getIntent();
         idPer = intent.getIntExtra("id",0);
+
         a = (EditText) findViewById(R.id.user);
         b = (EditText) findViewById(R.id.pass);
         sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
         int val;
-
-
+        String time;
+        Random r = new Random();
         DataBase sistema = new DataBase(this, "app", null, 1);
         SQLiteDatabase db = sistema.getWritableDatabase();
-        Random r = new Random();
-        String qu = "select * from lectura;";
+
+        String qu = "select * from lectura where autor="+idPer+" order by fecha;";
         Cursor fila = db.rawQuery(qu, null);
         if (!fila.moveToFirst()) {
             c = Calendar.getInstance();
         }
         else{
-            FileInputStream iS;
-            try {
-                iS = openFileInput("resta.txt");
-                Reader reader = new InputStreamReader(iS);
-                BufferedReader br = new BufferedReader( reader );
-                res = Integer.parseInt(br.readLine());
-            }catch (Exception e){
-                e.printStackTrace();
-            }
+            time = fila.getString( fila.getColumnIndex("fecha") );
+            Toast.makeText(this, time , Toast.LENGTH_SHORT).show();
+            Date date;
             c = Calendar.getInstance();
-            c.add(Calendar.DAY_OF_MONTH, res);
-            res--;
+            try {
+                date = sdf.parse(time);
+                c.setTime( date );
+                c.add(Calendar.DAY_OF_MONTH, -1);
+            } catch (ParseException e) {
+                Log.d("Error",e.toString());
+                Toast.makeText(this, "PTM" , Toast.LENGTH_SHORT).show();
+            }
+
             val = r.nextInt(183 - 67) + 67;
             a.setText( Integer.toString(val) );
             val = r.nextInt(123 - 47) + 47;
             b.setText( Integer.toString(val) );
-            FileOutputStream oS;
-            try{
-                oS = openFileOutput("resta.txt", Context.MODE_PRIVATE);
-                oS.write(Integer.toString(res).getBytes());
-            }catch (Exception e){
-                e.printStackTrace();
-            }
         }
+        db.close();
     }
 
     public void cancelar(View v) {
@@ -84,11 +84,11 @@ public class CapturaLecturas extends Activity {
         SQLiteDatabase db = sistema.getWritableDatabase();
         ContentValues inst = new ContentValues();
         String aa, bb ,ti ;
-
+        long mm;
         aa = a.getText().toString().trim();
         bb = b.getText().toString().trim();
         ti = sdf.format(c.getTime());
-
+        mm = c.getTimeInMillis();
         //Toast.makeText(getApplicationContext(), ti, Toast.LENGTH_LONG).show();
         inst.put("fecha",ti);
         inst.put("lfecha", c.getTimeInMillis());
@@ -96,7 +96,7 @@ public class CapturaLecturas extends Activity {
         inst.put("baja", bb );
         inst.put("to_persona_id",idPer);
         long idT = db.insert("lectura", null, inst);
-        //Toast.makeText(getApplicationContext(), "Fila:  " + idT, Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "Fila:  " + idT, Toast.LENGTH_LONG).show();
 
         if( Integer.valueOf(aa)>=180 || Integer.valueOf(bb)>=120  ) {
             String qu = "select * from medico;";
@@ -116,6 +116,7 @@ public class CapturaLecturas extends Activity {
                 }
             }
         }
+        finish();
 
     }
 }
