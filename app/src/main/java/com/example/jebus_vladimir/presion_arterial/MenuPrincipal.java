@@ -23,11 +23,13 @@ public class MenuPrincipal extends Activity {
 
     public void openGraph( View v )  {
         Intent intent = new Intent(MenuPrincipal.this, LineChartDeLecturas.class);
+        intent.putExtra("id", idPer );
         startActivity(intent);
     }
 
     public void openTable( View v )  {
         Intent intent = new Intent(MenuPrincipal.this, TablaDeLecturas.class);
+        intent.putExtra("id", idPer );
         startActivity(intent);
     }
 }

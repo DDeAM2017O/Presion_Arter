@@ -30,14 +30,15 @@ public class DataBase extends SQLiteOpenHelper {
                 "`altura` VARCHAR(50) NOT NULL," +
                 "`peso` VARCHAR(50) NOT NULL," +
                 "`edad` VARCHAR(50) NOT NULL," +
-                "UNIQUE (`to_medico_id`) );");
+                "`to_medico_id` INTEGER," +
+                " FOREIGN KEY( to_medico_id ) REFERENCES `medico` (id) );");
 
         db.execSQL("CREATE TABLE `lectura` (" +
                 "`id` INTEGER NOT NULL UNIQUE PRIMARY KEY, " +
                 "`fecha` VARCHAR(50) NOT NULL, " +
-                "`lfecha` INTEGER NOT NULL, " +
-                "`alta` VARCHAR(50) NOT NULL, " +
-                "`baja` VARCHAR(50) NOT NULL ," +
+                "`lfecha` LONG NOT NULL, " +
+                "`alta` FLOAT NOT NULL, " +
+                "`baja` FLOAT NOT NULL ," +
                 "`to_persona_id` INTEGER NOT NULL," +
                 " FOREIGN KEY( to_persona_id ) REFERENCES `persona` (id) );");
     }

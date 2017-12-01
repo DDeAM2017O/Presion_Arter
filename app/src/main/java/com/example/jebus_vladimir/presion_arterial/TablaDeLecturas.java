@@ -1,6 +1,7 @@
 package com.example.jebus_vladimir.presion_arterial;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -11,11 +12,13 @@ import com.example.jebus_vladimir.notimportant.MiPersonListAdapter;
 import java.util.ArrayList;
 
 public class TablaDeLecturas extends Activity {
-
+    private int idPer;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tabla_de_lecturas);
+        Intent intent = getIntent();
+        this.idPer = intent.getIntExtra("id",0);
     }
 
     @Override
@@ -23,7 +26,7 @@ public class TablaDeLecturas extends Activity {
         String  c, d, v[];
         DataBase sistema = new DataBase(this, "app", null, 1);
         SQLiteDatabase db = sistema.getWritableDatabase();
-        String qu = "select * from lectura;";
+        String qu = "SELECT fecha, alta, baja FROM lectura WHERE to_persona_id = " + idPer + " ORDER BY lfecha;";
         ArrayList<MiLectura> lis = new ArrayList<>();
         Cursor fila = db.rawQuery(qu, null);
         if (fila.moveToLast()) {

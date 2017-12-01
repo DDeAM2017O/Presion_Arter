@@ -1,6 +1,7 @@
 package com.example.jebus_vladimir.presion_arterial;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
@@ -32,6 +33,7 @@ import java.util.GregorianCalendar;
 public class LineChartDeLecturas extends Activity implements OnSeekBarChangeListener,
         OnChartValueSelectedListener {
 
+    private int idPer;
     private LineChart mChart;
     private MiConjuntoSeekBar mSeekBarTime, mSeekBarDays;
     protected Typeface mTfRegular;
@@ -43,6 +45,8 @@ public class LineChartDeLecturas extends Activity implements OnSeekBarChangeList
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_linechart_de_lecturas);
+        Intent intent = getIntent();
+        this.idPer = intent.getIntExtra("id",0);
 
         mTfRegular = Typeface.createFromAsset(getAssets(), "OpenSans-Regular.ttf");
         mTfLight = Typeface.createFromAsset(getAssets(), "OpenSans-Light.ttf");
@@ -171,16 +175,16 @@ public class LineChartDeLecturas extends Activity implements OnSeekBarChangeList
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
         if( fromUser )  {
             if( mSeekBarDays.seekB == seekBar )  {
-                setData( mSeekBarDays.setProgress( progress, null ), mSeekBarTime.value + 1 );
+                setData( mSeekBarTime.value + 1, mSeekBarDays.setProgress( progress, null ) );
             }  else  {
-                setData( mSeekBarDays.value, mSeekBarTime.setProgress( progress, null ) + 1 );
+                setData( mSeekBarTime.setProgress( progress, null ) + 1, mSeekBarDays.value );
             }
             // redraw
             mChart.invalidate();
         }
     }
 
-    private void setData(int count, float range) {
+    private void setData(int pos, float range) {
         /*Calendar c1 = new GregorianCalendar(), c2 = new GregorianCalendar();
         c1.set(2017, 1, 1, 0, 0, 0 );
         c2.set(2017, 1, 2, 0, 0, 0 );
@@ -192,27 +196,22 @@ public class LineChartDeLecturas extends Activity implements OnSeekBarChangeList
         ArrayList<Entry> yVals1 = new ArrayList<Entry>(), yVals2 = new ArrayList<Entry>();
         DataBase sistema = new DataBase(this, "app", null, 1);
         SQLiteDatabase db = sistema.getWritableDatabase();
-        String qu = "select * from lectura;";
+        String qu = "SELECT lfecha, alta, baja FROM lectura WHERE to_persona_id = " + idPer + " ORDER BY lfecha;";
         Cursor fila = db.rawQuery(qu, null);
-        if (fila.moveToLast()) {
+        if (fila.moveToFirst()) {
             i = 0;
             do  {
                 //v = fila.getString( fila.getColumnIndex("fecha") ).split( " " );
-                a = fila.getString( fila.getColumnIndex("alta") );
-                b = fila.getString( fila.getColumnIndex("baja") );
-                sys = dia = 0f;
-                if( !a.equals(""))
-                    sys = Float.parseFloat( a );
-                if( !b.equals(""))
-                    dia = Float.parseFloat( b );
+                sys = fila.getFloat( fila.getColumnIndex("alta") );
+                dia = fila.getFloat( fila.getColumnIndex("baja") );
 
                 yVals1.add(new Entry(i, dia));
                 yVals2.add(new Entry(i, sys));
 
-                if( fila.isFirst() == true )
+                if( fila.isLast() == true )
                     break;
                 i++;
-                fila.moveToPrevious();
+                fila.moveToNext();
             }  while( i < range );
         }  else  {
             return;

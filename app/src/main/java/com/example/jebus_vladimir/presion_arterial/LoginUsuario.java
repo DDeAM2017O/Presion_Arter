@@ -29,7 +29,7 @@ public class LoginUsuario extends Activity {
         int t;
         String u = a.getText().toString().trim();
         String p = b.getText().toString().trim();
-        String qu = "select id from persona where user = '"+u+"' and pass = '"+p+"'";
+        String qu = "SELECT id FROM persona WHERE user = '"+u+"' and PASS = '"+p+"'";
         Cursor fila = db.rawQuery(qu, null);
         if (fila.moveToFirst()) {
             t = fila.getInt( fila.getColumnIndex("id") );
