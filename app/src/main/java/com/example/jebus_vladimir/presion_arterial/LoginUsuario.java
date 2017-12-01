@@ -40,7 +40,7 @@ public class LoginUsuario extends Activity {
             startActivity(intent);
             finish();
         } else {
-            Toast.makeText(this, "Datos incorrectos", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Wrong Data", Toast.LENGTH_SHORT).show();
             db.close();
         }
 

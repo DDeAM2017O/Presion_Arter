@@ -78,7 +78,7 @@ public class CapturaLecturas extends Activity {
         inst.put( "baja", bb );
         inst.put( "to_persona_id", idPer );
         idT = db.insert("lectura", null, inst);
-        Toast.makeText(getApplicationContext(), "Fila:  " + idT, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getApplicationContext(), "Fila:  " + idT, Toast.LENGTH_SHORT).show();
 
         if( aa >=180 || bb >=120 || aa <= 70 || bb <= 50 ) {
             query = "SELECT tel FROM medico;";

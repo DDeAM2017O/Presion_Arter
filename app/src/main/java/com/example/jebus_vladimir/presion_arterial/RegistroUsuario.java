@@ -53,11 +53,11 @@ public class RegistroUsuario extends Activity {
         long idT = db.insert("persona", null, inst);
         db.close();
         if(idT != -1) {
-            Toast.makeText(this, "Usuario ingresado" , Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "User has been added" , Toast.LENGTH_SHORT).show();
             finish();
         }
         else {
-           Toast.makeText(this, "Hubo problema", Toast.LENGTH_SHORT).show();
+           Toast.makeText(this, "There was a trouble", Toast.LENGTH_SHORT).show();
         }
 
     }

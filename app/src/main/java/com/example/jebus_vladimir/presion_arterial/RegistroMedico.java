@@ -63,9 +63,9 @@ public class RegistroMedico extends Activity {
             long idT = db.insert("medico", null, inst);
 
             if (idT != -1) {
-                Toast.makeText(this, "Añadido", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Doctor has been added", Toast.LENGTH_SHORT).show();
             } else {
-                Toast.makeText(this, "Hubo problema", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "There was a trouble", Toast.LENGTH_SHORT).show();
             }
         }
 
@@ -87,9 +87,9 @@ public class RegistroMedico extends Activity {
                         "`nombre` = '"+aa+"', `dir` = '"+bb+"', " +
                         "`tel` = '"+cc+"', `email` = '"+dd+"' WHERE `" +
                         "medico`.`nombre` = '"+val+"';");*/
-                Toast.makeText(this, "Información actualizada "+colums, Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "The Doctor's information has been updated"+colums, Toast.LENGTH_SHORT).show();
             }catch (Exception e){
-                Log.d("=/",e.toString());
+                Log.d("Error",e.toString());
             }
         }
 
