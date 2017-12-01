@@ -16,16 +16,16 @@ public class DataBase extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE `medico` ( `id` INTEGER AUTO_INCREMENT, " +
+        db.execSQL("CREATE TABLE `medico` (" +
+                " `id` INTEGER NOT NULL UNIQUE PRIMARY KEY, " +
                 "`nombre` VARCHAR(50) NOT NULL," +
                 "`dir` VARCHAR(50) NOT NULL, " +
                 "`tel` VARCHAR(50) NOT NULL, " +
                 "`email` VARCHAR(50) NOT NULL," +
-                "PRIMARY KEY(`id`) " +
                 "UNIQUE (`nombre`) )");
 
         db.execSQL("CREATE TABLE `persona`(" +
-                "`id` INTEGER AUTO_INCREMENT, " +
+                "`id` INTEGER NOT NULL UNIQUE PRIMARY KEY, " +
                 "`user` VARCHAR(50) NOT NULL, " +
                 "`pass` VARCHAR(50) NOT NULL, " +
                 "`nombre` VARCHAR(50) NOT NULL, " +
@@ -34,15 +34,16 @@ public class DataBase extends SQLiteOpenHelper {
                 "`altura` VARCHAR(50) NOT NULL," +
                 "`peso` VARCHAR(50) NOT NULL," +
                 "`edad` VARCHAR(50) NOT NULL," +
-                "PRIMARY KEY(`id`) " +
                 "UNIQUE (`user`) );");
 
         db.execSQL("CREATE TABLE `lectura` (" +
-                "`id` INTEGER AUTO_INCREMENT, " +
+                "`id` INTEGER NOT NULL UNIQUE PRIMARY KEY, " +
                 "`fecha` VARCHAR(50) NOT NULL, " +
+                //"`lfecha` INTEGER NOT NULL, " +
                 "`alta` VARCHAR(50) NOT NULL, " +
-                "`baja` VARCHAR(50) NOT NULL, " +
-                "(`id`) );");
+                "`baja` VARCHAR(50) NOT NULL ," +
+                "`autor` INTEGER NOT NULL," +
+                " FOREIGN KEY( autor ) REFERENCES `persona` (id) );");
     }
 
     @Override

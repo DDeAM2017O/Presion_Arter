@@ -10,14 +10,18 @@ import android.view.View;
  */
 
 public class Menu extends Activity {
+    private int idPer;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+        Intent intent = getIntent();
+        idPer = intent.getIntExtra("id",0);
     }
 
     public void captura(View v) {
         Intent intent = new Intent(Menu.this, Captura.class);
+        intent.putExtra("id", idPer );
         startActivity(intent);
     }
 

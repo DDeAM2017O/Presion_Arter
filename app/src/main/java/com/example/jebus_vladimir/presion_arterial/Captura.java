@@ -32,11 +32,13 @@ public class Captura extends Activity {
     private EditText a, b;
     private Calendar c;
     private SimpleDateFormat sdf;
-    private int res;
+    private int res,idPer;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_captura);
+        setContentView(R.layout.captura);
+        Intent intent = getIntent();
+        idPer = intent.getIntExtra("id",0);
         a = (EditText) findViewById(R.id.user);
         b = (EditText) findViewById(R.id.pass);
         sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -82,7 +84,7 @@ public class Captura extends Activity {
         finish();
     }
 
-    public void aceptar(View v){
+    public void Aceptar(View v){
 
         DataBase sistema = new DataBase(this, "app", null, 1);
         SQLiteDatabase db = sistema.getWritableDatabase();
@@ -97,6 +99,7 @@ public class Captura extends Activity {
         inst.put("fecha",ti);
         inst.put("alta", aa );
         inst.put("baja", bb );
+        inst.put("autor",idPer);
         long idT = db.insert("lectura", null, inst);
         //Toast.makeText(getApplicationContext(), "Fila:  " + idT, Toast.LENGTH_LONG).show();
 
@@ -118,7 +121,6 @@ public class Captura extends Activity {
                 }
             }
         }
-        finish();
 
     }
 }
