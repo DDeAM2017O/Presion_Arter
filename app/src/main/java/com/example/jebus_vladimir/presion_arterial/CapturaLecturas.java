@@ -41,12 +41,6 @@ public class CapturaLecturas extends Activity {
         generarPresion( Integer.parseInt( a.getText().toString().trim() ),
                 Integer.parseInt( b.getText().toString().trim() ) );
 
-        for( i = 0; i < 6; i++ )  {
-            s = r.nextInt(183 - 67) + 67;
-            d = r.nextInt(123 - 47) + 47;
-            generarPresion( s, d );
-        }
-
         finish();
     }
 
@@ -54,21 +48,12 @@ public class CapturaLecturas extends Activity {
         long time, idT;
         String query, ti, mensaje;
         Cursor fila;
+
         ContentValues inst = new ContentValues();
         DataBase sistema = new DataBase(this, "app", null, 1);
         SQLiteDatabase db = sistema.getWritableDatabase();
 
-        if( c == null )  {
-            query = "SELECT * FROM lectura WHERE to_persona_id = " + idPer + " ORDER BY lfecha;";
-            fila = db.rawQuery( query , null);
-            c = Calendar.getInstance();
-            if ( fila.moveToFirst() )  {
-                time = fila.getLong( fila.getColumnIndex("lfecha") );
-                c.setTimeInMillis( time );
-                c.add(Calendar.DAY_OF_MONTH, -1);
-            }
-        }
-
+        c = Calendar.getInstance();
         ti = sdf.format( c.getTime() );
         time = c.getTimeInMillis();
         //Toast.makeText(getApplicationContext(), ti, Toast.LENGTH_LONG).show();

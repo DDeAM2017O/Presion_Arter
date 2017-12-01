@@ -13,7 +13,7 @@
         android:layout_alignParentBottom="true"
         android:layout_below="@+id/title"
         android:orientation="horizontal"
-        android:weightSum="4">
+        android:weightSum="100">
 
 
         <TextView
@@ -25,7 +25,7 @@
             android:text="TextView1"
             android:textSize="18sp"
             android:textColor="#fff"
-            android:layout_weight="1" />
+            android:layout_weight="24" />
         <TextView
             android:id="@+id/timeTV"
             android:layout_width="match_parent"
@@ -35,7 +35,7 @@
             android:text="TextView1"
             android:textSize="18sp"
             android:textColor="#fff"
-            android:layout_weight="1" />
+            android:layout_weight="26" />
         <TextView
             android:id="@+id/sysTV"
             android:layout_width="match_parent"
@@ -45,7 +45,7 @@
             android:text="TextView1"
             android:textSize="18sp"
             android:textColor="@color/red"
-            android:layout_weight="1" />
+            android:layout_weight="25" />
         <TextView
             android:id="@+id/disTV"
             android:layout_width="match_parent"
@@ -55,6 +55,6 @@
             android:text="TextView1"
             android:textSize="18sp"
             android:textColor="@color/blue"
-            android:layout_weight="1" />
+            android:layout_weight="25" />
     </LinearLayout>
 </RelativeLayout>
