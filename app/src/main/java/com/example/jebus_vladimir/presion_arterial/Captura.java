@@ -32,7 +32,7 @@ public class Captura extends Activity {
     private EditText a, b;
     private Calendar c;
     private SimpleDateFormat sdf;
-    private int res;
+    private int res,idPer;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
