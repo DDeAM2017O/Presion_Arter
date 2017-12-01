@@ -1,6 +1,8 @@
 package com.example.jebus_vladimir.presion_arterial;
 
 import android.app.Activity;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -10,6 +12,7 @@ import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 
+import com.example.jebus_vladimir.notimportant.Lectura;
 import com.example.jebus_vladimir.notimportant.MySeekBar;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Legend;
@@ -26,6 +29,9 @@ import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.StringTokenizer;
 
 public class LineChartActivity extends Activity implements OnSeekBarChangeListener,
         OnChartValueSelectedListener {
@@ -179,27 +185,43 @@ public class LineChartActivity extends Activity implements OnSeekBarChangeListen
     }
 
     private void setData(int count, float range) {
+        /*Calendar c1 = new GregorianCalendar(), c2 = new GregorianCalendar();
+        c1.set(2017, 1, 1, 0, 0, 0 );
+        c2.set(2017, 1, 2, 0, 0, 0 );
+        String  v[], d[], t[];
+        long piv, tmp, unDia = c2.getTimeInMillis() - c1.getTimeInMillis();*/
+        float sys, dia;
+        int i;
+        String a, b;
+        ArrayList<Entry> yVals1 = new ArrayList<Entry>(), yVals2 = new ArrayList<Entry>();
+        DataBase sistema = new DataBase(this, "app", null, 1);
+        SQLiteDatabase db = sistema.getWritableDatabase();
+        String qu = "select * from lectura;";
+        Cursor fila = db.rawQuery(qu, null);
+        if (fila.moveToLast()) {
+            i = 0;
+            do  {
+                //v = fila.getString( fila.getColumnIndex("fecha") ).split( " " );
+                a = fila.getString( fila.getColumnIndex("alta") );
+                b = fila.getString( fila.getColumnIndex("baja") );
+                sys = dia = 0f;
+                if( !a.equals(""))
+                    sys = Float.parseFloat( a );
+                if( !b.equals(""))
+                    dia = Float.parseFloat( b );
 
-        ArrayList<Entry> yVals1 = new ArrayList<Entry>();
+                yVals1.add(new Entry(i, dia));
+                yVals2.add(new Entry(i, sys));
 
-        for (int i = 0; i < count; i++) {
-            float mult = range / 2f;
-            float val = (float) (Math.random() * mult) + 50;
-            yVals1.add(new Entry(i, val));
+                if( fila.isFirst() == true )
+                    break;
+                i++;
+                fila.moveToPrevious();
+            }  while( i < range );
         }
+        db.close();
 
-        ArrayList<Entry> yVals2 = new ArrayList<Entry>();
-
-        for (int i = 0; i < count; i++) {
-            float mult = range;
-            float val = (float) (Math.random() * mult) + 100;
-            yVals2.add(new Entry(i, val));
-//            if(i == 10) {
-//                yVals2.add(new Entry(i, val + 50));
-//            }
-        }
-
-        LineDataSet set1, set2, set3;
+        LineDataSet set1, set2;
         LineData aux;
         if (mChart.getData() != null &&
                 mChart.getData().getDataSetCount() > 0) {
@@ -273,5 +295,20 @@ public class LineChartActivity extends Activity implements OnSeekBarChangeListen
     public void onStopTrackingTouch(SeekBar seekBar) {
         // TODO Auto-generated method stub
 
+    }
+    private long getMeD( String[] fecha ){
+        Calendar cal = new GregorianCalendar();
+
+        String v[] = fecha[0].split( "-" ), v2[];
+
+        if( fecha[1] == null ) {
+            cal.set(Integer.parseInt(v[0]), Integer.parseInt(v[1]), Integer.parseInt(v[2]));
+        }  else  {
+            v2 = fecha[1].split( ":" );
+            cal.set(Integer.parseInt(v[0]), Integer.parseInt(v[1]), Integer.parseInt(v[2]),
+                    Integer.parseInt(v2[0]), Integer.parseInt(v2[1]), Integer.parseInt(v2[2]));
+        }
+
+        return cal.getTimeInMillis();
     }
 }

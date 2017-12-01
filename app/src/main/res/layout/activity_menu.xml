@@ -68,7 +68,7 @@
         android:layout_width="250dp"
         android:layout_height="50dp"
         android:layout_marginTop="14dp"
-        android:text="Menú"
+        android:text="@string/menu"
         android:textAlignment="center"
         android:textColor="#fff"
         android:textSize="30sp"

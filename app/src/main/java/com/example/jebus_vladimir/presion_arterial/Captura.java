@@ -36,7 +36,7 @@ public class Captura extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.captura);
+        setContentView(R.layout.activity_captura);
         a = (EditText) findViewById(R.id.user);
         b = (EditText) findViewById(R.id.pass);
         sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -82,7 +82,7 @@ public class Captura extends Activity {
         finish();
     }
 
-    public void Aceptar(View v){
+    public void aceptar(View v){
 
         DataBase sistema = new DataBase(this, "app", null, 1);
         SQLiteDatabase db = sistema.getWritableDatabase();
@@ -118,6 +118,7 @@ public class Captura extends Activity {
                 }
             }
         }
+        finish();
 
     }
 }

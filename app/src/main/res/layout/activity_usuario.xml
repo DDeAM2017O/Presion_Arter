@@ -15,7 +15,7 @@
         android:layout_alignLeft="@+id/user"
         android:layout_alignStart="@+id/user"
         android:layout_alignTop="@+id/imageView2"
-        android:layout_marginTop="13dp"
+        android:layout_marginTop="12dp"
         android:text="@string/signup"
         android:textColor="#fff"
         android:textSize="24sp"
@@ -52,7 +52,7 @@
         android:id="@+id/user"
         android:layout_width="300dp"
         android:layout_height="30dp"
-        android:layout_marginTop="65dp"
+        android:layout_marginTop="80dp"
         android:background="@color/transparent"
         android:ems="10"
         android:hint="@string/user"
@@ -77,7 +77,7 @@
         android:layout_below="@+id/peso"
         android:layout_alignLeft="@+id/peso"
         android:layout_alignStart="@+id/peso"
-        android:layout_marginTop="18dp" />
+        android:layout_marginTop="12dp" />
 
     <EditText
         android:id="@+id/peso"
@@ -99,7 +99,7 @@
         android:id="@+id/altura"
         android:layout_width="300dp"
         android:layout_height="30dp"
-        android:layout_marginTop="17dp"
+        android:layout_marginTop="12dp"
         android:background="@color/transparent"
         android:ems="10"
         android:hint="@string/height"
@@ -118,7 +118,7 @@
         android:layout_alignLeft="@+id/dir"
         android:layout_alignStart="@+id/dir"
         android:layout_below="@+id/dir"
-        android:layout_marginTop="14dp"
+        android:layout_marginTop="12dp"
         android:background="@color/transparent"
         android:ems="10"
         android:hint="@string/phon"
@@ -134,7 +134,7 @@
         android:layout_alignLeft="@+id/name"
         android:layout_alignStart="@+id/name"
         android:layout_below="@+id/name"
-        android:layout_marginTop="11dp"
+        android:layout_marginTop="12dp"
         android:background="@color/transparent"
         android:ems="10"
         android:hint="@string/home"
@@ -150,7 +150,7 @@
         android:layout_alignLeft="@+id/pass"
         android:layout_alignStart="@+id/pass"
         android:layout_below="@+id/pass"
-        android:layout_marginTop="14dp"
+        android:layout_marginTop="12dp"
         android:background="@color/transparent"
         android:ems="10"
         android:hint="@string/name"
@@ -166,11 +166,11 @@
         android:layout_alignLeft="@+id/user"
         android:layout_alignStart="@+id/user"
         android:layout_below="@+id/user"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="12dp"
         android:background="@color/transparent"
         android:ems="10"
         android:hint="@string/pass"
-        android:inputType="textPersonName"
+        android:inputType="textPassword"
         android:textColorHint="#fff"
         android:textSize="18sp"
         android:textColor="#fff" />
@@ -182,7 +182,7 @@
         android:layout_alignRight="@+id/textView3"
         android:layout_alignParentRight="true"
         android:layout_marginRight="36dp"
-        android:layout_marginTop="13dp"
+        android:layout_marginTop="12dp"
         app:srcCompat="@drawable/logo" />
 
 

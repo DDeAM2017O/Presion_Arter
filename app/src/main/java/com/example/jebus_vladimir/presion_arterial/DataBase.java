@@ -42,7 +42,7 @@ public class DataBase extends SQLiteOpenHelper {
                 "`fecha` VARCHAR(50) NOT NULL, " +
                 "`alta` VARCHAR(50) NOT NULL, " +
                 "`baja` VARCHAR(50) NOT NULL, " +
-                "PRIMARY KEY(`id`) );");
+                "(`id`) );");
     }
 
     @Override

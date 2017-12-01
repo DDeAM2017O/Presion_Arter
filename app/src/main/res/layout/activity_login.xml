@@ -23,29 +23,27 @@
         android:layout_width="250dp"
         android:layout_height="50dp"
 
-        android:layout_alignLeft="@+id/captu"
-        android:layout_alignParentBottom="true"
         android:layout_alignStart="@+id/captu"
-        android:layout_marginBottom="99dp"
+        android:layout_below="@+id/captu"
+        android:layout_marginTop="15dp"
         android:background="#df546e"
+        android:onClick="cancelar"
         android:text="@string/cancel"
         android:textColor="#fff"
-        android:textSize="18sp"
-        android:onClick="cancelar"
-        />
+        android:textSize="18sp" />
 
     <Button
         android:id="@+id/captu"
         android:layout_width="250dp"
         android:layout_height="50dp"
-        android:layout_above="@+id/resul"
+        android:layout_below="@+id/pass"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="12dp"
+        android:layout_marginTop="15dp"
         android:background="#ffffff"
+        android:onClick="aceptar"
         android:text="@string/acept"
         android:textColor="#f16f7d"
-        android:textSize="18sp"
-        android:onClick="aceptar"/>
+        android:textSize="18sp" />
 
     <EditText
         android:id="@+id/user"

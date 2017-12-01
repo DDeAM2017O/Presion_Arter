@@ -18,11 +18,12 @@
     <string name="resT">Show table history</string>
     <string name="sigUpD">Sign Up for Doctors</string>
     <string name="mail">Em@il</string>
-    <string name="phon">Cellphone number</string>
-    <string name="name">Name</string>
-    <string name="age">Age</string>
-    <string name="height">Height</string>
-    <string name="weight">Weight</string>
+    <string name="phon">Cellphone number (044) </string>
+    <string name="name">Full Name</string>
+    <string name="age">Age (years)</string>
+    <string name="menu">Menu</string>
+    <string name="height">Height (m)</string>
+    <string name="weight">Weight (kg)</string>
     <string name="office">Office address</string>
     <string name="home">Home address</string>
 
