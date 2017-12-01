@@ -6,10 +6,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.widget.ListView;
-
 import com.example.jebus_vladimir.notimportant.MiLectura;
 import com.example.jebus_vladimir.notimportant.MiPersonListAdapter;
-
 import java.util.ArrayList;
 
 public class TablaDeLecturas extends Activity {

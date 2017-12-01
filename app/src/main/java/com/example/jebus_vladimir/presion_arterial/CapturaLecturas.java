@@ -2,7 +2,6 @@ package com.example.jebus_vladimir.presion_arterial;
 
 import android.app.Activity;
 import android.content.ContentValues;
-import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -13,13 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
-
-
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
+import java.text.ParseException;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;
@@ -33,7 +26,6 @@ public class CapturaLecturas extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_captura_lecturas);
-        setContentView(R.layout.activity_captura);
         Intent intent = getIntent();
         idPer = intent.getIntExtra("id",0);
 

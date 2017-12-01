@@ -11,7 +11,6 @@ import android.view.WindowManager;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
-
 import com.example.jebus_vladimir.notimportant.MiConjuntoSeekBar;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Legend;
@@ -26,7 +25,6 @@ import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.github.mikephil.charting.utils.ColorTemplate;
-
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -216,6 +214,8 @@ public class LineChartDeLecturas extends Activity implements OnSeekBarChangeList
                 i++;
                 fila.moveToPrevious();
             }  while( i < range );
+        }  else  {
+            return;
         }
         db.close();
 

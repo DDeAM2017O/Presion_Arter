@@ -1,14 +1,11 @@
 package com.example.jebus_vladimir.presion_arterial;
 
-import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import net.danlew.android.joda.JodaTimeAndroid;
 import android.os.Bundle;
 import android.view.View;
 
-import java.io.File;
-import java.io.FileOutputStream;
 
 public class MainActivity extends AppCompatActivity {
 
