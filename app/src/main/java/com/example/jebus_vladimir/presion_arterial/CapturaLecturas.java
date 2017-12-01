@@ -9,7 +9,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.icu.text.SimpleDateFormat;
 import android.os.Bundle;
 import android.telephony.SmsManager;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -21,14 +20,9 @@ import java.io.FileOutputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Random;
 
-/**
- * Created by Jebus on 28/11/2017.
- */
-
-public class Captura extends Activity {
+public class CapturaLecturas extends Activity {
     private EditText a, b;
     private Calendar c;
     private SimpleDateFormat sdf;
@@ -36,7 +30,7 @@ public class Captura extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.captura);
+        setContentView(R.layout.activity_captura_lecturas);
         Intent intent = getIntent();
         idPer = intent.getIntExtra("id",0);
         a = (EditText) findViewById(R.id.user);
@@ -84,7 +78,7 @@ public class Captura extends Activity {
         finish();
     }
 
-    public void Aceptar(View v){
+    public void aceptar(View v){
 
         DataBase sistema = new DataBase(this, "app", null, 1);
         SQLiteDatabase db = sistema.getWritableDatabase();
@@ -97,9 +91,10 @@ public class Captura extends Activity {
 
         //Toast.makeText(getApplicationContext(), ti, Toast.LENGTH_LONG).show();
         inst.put("fecha",ti);
+        inst.put("lfecha", c.getTimeInMillis());
         inst.put("alta", aa );
         inst.put("baja", bb );
-        inst.put("autor",idPer);
+        inst.put("to_persona_id",idPer);
         long idT = db.insert("lectura", null, inst);
         //Toast.makeText(getApplicationContext(), "Fila:  " + idT, Toast.LENGTH_LONG).show();
 

@@ -4,10 +4,6 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-/**
- * Created by Jebus on 28/11/2017.
- */
-
 public class DataBase extends SQLiteOpenHelper {
 
     public DataBase(Context context, String name, SQLiteDatabase.CursorFactory factory, int version){
@@ -34,21 +30,21 @@ public class DataBase extends SQLiteOpenHelper {
                 "`altura` VARCHAR(50) NOT NULL," +
                 "`peso` VARCHAR(50) NOT NULL," +
                 "`edad` VARCHAR(50) NOT NULL," +
-                "UNIQUE (`user`) );");
+                "UNIQUE (`to_medico_id`) );");
 
         db.execSQL("CREATE TABLE `lectura` (" +
                 "`id` INTEGER NOT NULL UNIQUE PRIMARY KEY, " +
                 "`fecha` VARCHAR(50) NOT NULL, " +
-                //"`lfecha` INTEGER NOT NULL, " +
+                "`lfecha` INTEGER NOT NULL, " +
                 "`alta` VARCHAR(50) NOT NULL, " +
                 "`baja` VARCHAR(50) NOT NULL ," +
-                "`autor` INTEGER NOT NULL," +
-                " FOREIGN KEY( autor ) REFERENCES `persona` (id) );");
+                "`to_persona_id` INTEGER NOT NULL," +
+                " FOREIGN KEY( to_persona_id ) REFERENCES `persona` (id) );");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        //db.execSQL("DROP TABLE IF EXISTS Medico");
+        //db.execSQL("DROP TABLE IF EXISTS medico");
         //db.execSQL("DROP TABLE IF EXISTS persona");
         //db.execSQL("DROP TABLE IF EXISTS lecturas");
         //onCreate(db);

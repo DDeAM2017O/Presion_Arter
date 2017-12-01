@@ -2,7 +2,6 @@ package com.example.jebus_vladimir.presion_arterial;
 
 import android.app.Activity;
 import android.content.ContentValues;
-import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -11,16 +10,12 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-/**
- * Created by Jebus on 28/11/2017.
- */
-
-public class Medico extends Activity {
+public class RegistroMedico extends Activity {
     private EditText a, b, c, d;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_medico);
+        setContentView(R.layout.activity_registro_medico);
         a = (EditText) findViewById(R.id.user);
         b = (EditText) findViewById(R.id.pass);
         c = (EditText) findViewById(R.id.name);

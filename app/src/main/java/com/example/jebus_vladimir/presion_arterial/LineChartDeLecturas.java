@@ -12,8 +12,7 @@ import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 
-import com.example.jebus_vladimir.notimportant.Lectura;
-import com.example.jebus_vladimir.notimportant.MySeekBar;
+import com.example.jebus_vladimir.notimportant.MiConjuntoSeekBar;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.Legend.LegendForm;
@@ -31,13 +30,12 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-import java.util.StringTokenizer;
 
-public class LineChartActivity extends Activity implements OnSeekBarChangeListener,
+public class LineChartDeLecturas extends Activity implements OnSeekBarChangeListener,
         OnChartValueSelectedListener {
 
     private LineChart mChart;
-    private MySeekBar mSeekBarTime, mSeekBarDays;
+    private MiConjuntoSeekBar mSeekBarTime, mSeekBarDays;
     protected Typeface mTfRegular;
     protected Typeface mTfLight;
 
@@ -46,14 +44,14 @@ public class LineChartActivity extends Activity implements OnSeekBarChangeListen
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_linechart);
+        setContentView(R.layout.activity_linechart_de_lecturas);
 
         mTfRegular = Typeface.createFromAsset(getAssets(), "OpenSans-Regular.ttf");
         mTfLight = Typeface.createFromAsset(getAssets(), "OpenSans-Light.ttf");
 
-        mSeekBarTime = new MySeekBar( this, (SeekBar) findViewById(R.id.seekBar1),
+        mSeekBarTime = new MiConjuntoSeekBar( this, (SeekBar) findViewById(R.id.seekBar1),
                 (TextView) findViewById(R.id.timeValue),0, 0 );
-        mSeekBarDays = new MySeekBar( this, (SeekBar) findViewById(R.id.seekBar2),
+        mSeekBarDays = new MiConjuntoSeekBar( this, (SeekBar) findViewById(R.id.seekBar2),
                 (TextView) findViewById(R.id.dayValue),7, 7 );
 
         mChart = (LineChart) findViewById(R.id.chart1);

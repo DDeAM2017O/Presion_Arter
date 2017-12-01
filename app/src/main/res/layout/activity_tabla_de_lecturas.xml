@@ -7,7 +7,7 @@ android:id="@+id/activity_tabular"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
     android:background="@drawable/new_login_gradients"
-    tools:context="com.example.jebus_vladimir.presion_arterial.Tabular">
+    tools:context="com.example.jebus_vladimir.presion_arterial.TablaDeLecturas">
 
     <ImageView
         android:id="@+id/imageView"
@@ -46,8 +46,7 @@ android:layout_height="match_parent"
             android:layout_weight="1"/>
         <TextView
             android:textAlignment="center"
-            android:text="SYSTOLIC
-mm Hg"
+            android:text="SYSTOLIC mm Hg"
             android:textColor="@color/red"
             android:textSize="18sp"
             android:background="#df546e"
@@ -56,8 +55,7 @@ mm Hg"
             android:layout_weight="1"/>
         <TextView
             android:textAlignment="center"
-            android:text="DIASTOLIC
-mm Hg"
+            android:text="DIASTOLIC mm Hg"
             android:textColor="@color/blue"
             android:textSize="18sp"
             android:background="#df546e"

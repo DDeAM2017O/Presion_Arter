@@ -14,31 +14,26 @@ import com.example.jebus_vladimir.presion_arterial.R;
 
 import java.util.ArrayList;
 
-/**
- * Created by MSI 0ND on 11/30/2017.
- */
-public class PersonListAdapter extends ArrayAdapter<Lectura> {
 
-    private static final String TAG = "PersonListAdapter";
+public class MiPersonListAdapter extends ArrayAdapter<MiLectura> {
+
+    private static final String TAG = "MiPersonListAdapter";
 
     private Context mContext;
     private int mResource;
     private int lastPosition = -1;
 
-    /**
-     * Holds variables in a View
-     */
     private static class ViewHolder {
         TextView date, time, sys, dis;
     }
 
     /**
-     * Default constructor for the PersonListAdapter
+     * Default constructor for the MiPersonListAdapter
      * @param context
      * @param resource
      * @param objects
      */
-    public PersonListAdapter(Context context, int resource, ArrayList<Lectura> objects) {
+    public MiPersonListAdapter(Context context, int resource, ArrayList<MiLectura> objects) {
         super(context, resource, objects);
         mContext = context;
         mResource = resource;
@@ -50,13 +45,13 @@ public class PersonListAdapter extends ArrayAdapter<Lectura> {
         //create the view result for showing the animation
         final View result;
         //ViewHolder object
-        PersonListAdapter.ViewHolder holder;
+        MiPersonListAdapter.ViewHolder holder;
 
 
         if(convertView == null){
             LayoutInflater inflater = LayoutInflater.from(mContext);
             convertView = inflater.inflate(mResource, parent, false);
-            holder= new PersonListAdapter.ViewHolder();
+            holder= new MiPersonListAdapter.ViewHolder();
             holder.date = (TextView) convertView.findViewById(R.id.dateTV);
             holder.time = (TextView) convertView.findViewById(R.id.timeTV);
             holder.sys = (TextView) convertView.findViewById(R.id.sysTV);
@@ -67,7 +62,7 @@ public class PersonListAdapter extends ArrayAdapter<Lectura> {
             convertView.setTag(holder);
         }
         else{
-            holder = (PersonListAdapter.ViewHolder) convertView.getTag();
+            holder = (MiPersonListAdapter.ViewHolder) convertView.getTag();
             result = convertView;
         }
 

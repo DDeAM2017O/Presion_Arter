@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/new_login_gradients"
-    tools:context="com.example.jebus_vladimir.presion_arterial.MainActivity">
+    tools:context="com.example.jebus_vladimir.presion_arterial.MenuPrincipal">
 
 
     <ImageView

@@ -9,13 +9,12 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-
-public class Login extends Activity {
+public class LoginUsuario extends Activity {
     private EditText a, b;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_login_usuario);
         a = (EditText) findViewById(R.id.user);
         b = (EditText) findViewById(R.id.pass);
     }
@@ -35,14 +34,16 @@ public class Login extends Activity {
         if (fila.moveToFirst()) {
             t = fila.getInt( fila.getColumnIndex("id") );
             Toast.makeText(this, R.string.bienvenido, Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(Login.this, Menu.class);
+            Intent intent = new Intent(LoginUsuario.this, MenuPrincipal.class);
             intent.putExtra("id", t );
             db.close();
             startActivity(intent);
             finish();
         } else {
             Toast.makeText(this, "Datos incorrectos", Toast.LENGTH_SHORT).show();
+            db.close();
         }
+
 
 
     }

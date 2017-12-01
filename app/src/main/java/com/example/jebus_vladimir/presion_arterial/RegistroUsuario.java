@@ -8,17 +8,13 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-/**
- * Created by Jebus on 28/11/2017.
- */
-
-public class Usuario extends Activity {
+public class RegistroUsuario extends Activity {
 
     private EditText a, b, c, d, e, f, g, h;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_usuario);
+        setContentView(R.layout.activity_registro_usuario);
         a = (EditText) findViewById(R.id.user);
         b = (EditText) findViewById(R.id.pass);
         c = (EditText) findViewById(R.id.name);

@@ -4,11 +4,11 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 
-public class MySeekBar  {
+public class MiConjuntoSeekBar {
     public SeekBar seekB;
     private TextView textV;
     public int value, min;
-    public MySeekBar(SeekBar.OnSeekBarChangeListener oSBCListner, SeekBar seekB, TextView textV, int value, int min)  {
+    public MiConjuntoSeekBar(SeekBar.OnSeekBarChangeListener oSBCListner, SeekBar seekB, TextView textV, int value, int min)  {
         this.seekB = seekB;
         this.seekB.setProgress( value - min );
         this.seekB.setOnSeekBarChangeListener( oSBCListner );

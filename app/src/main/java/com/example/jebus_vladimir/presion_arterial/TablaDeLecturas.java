@@ -7,23 +7,17 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.widget.ListView;
 
-import com.example.jebus_vladimir.notimportant.Lectura;
-import com.example.jebus_vladimir.notimportant.PersonListAdapter;
+import com.example.jebus_vladimir.notimportant.MiLectura;
+import com.example.jebus_vladimir.notimportant.MiPersonListAdapter;
 
 import java.util.ArrayList;
 
-
-public class Tabular extends Activity {
+public class TablaDeLecturas extends Activity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tabular);
-
-
-
-
-
+        setContentView(R.layout.activity_tabla_de_lecturas);
     }
 
     @Override
@@ -32,7 +26,7 @@ public class Tabular extends Activity {
         DataBase sistema = new DataBase(this, "app", null, 1);
         SQLiteDatabase db = sistema.getWritableDatabase();
         String qu = "select * from lectura;";
-        ArrayList<Lectura> lis = new ArrayList<>();
+        ArrayList<MiLectura> lis = new ArrayList<>();
         Cursor fila = db.rawQuery(qu, null);
         if (fila.moveToLast()) {
             do  {
@@ -40,7 +34,7 @@ public class Tabular extends Activity {
                 c = fila.getString( fila.getColumnIndex("alta") );
                 d = fila.getString( fila.getColumnIndex("baja") );
 
-                lis.add( new Lectura( v[0], v[1], c, d ) );
+                lis.add( new MiLectura( v[0], v[1], c, d ) );
                 if( fila.isFirst() == true )
                     break;
                 fila.moveToPrevious();
@@ -49,7 +43,7 @@ public class Tabular extends Activity {
         db.close();
 
         ListView mListView = (ListView) findViewById(R.id.listView);
-        PersonListAdapter adapter = new PersonListAdapter(this, R.layout.lista_misc, lis);
+        MiPersonListAdapter adapter = new MiPersonListAdapter(this, R.layout.misk_elemento_de_lista, lis);
         mListView.setAdapter(adapter);
 
         super.onStart();

@@ -30,18 +30,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void startLogin(View v) {
-        Intent intent = new Intent(MainActivity.this, Login.class);
+        Intent intent = new Intent(MainActivity.this, LoginUsuario.class);
         startActivity(intent);
     }
 
     public void startUsuario(View v) {
-        Intent intent = new Intent(MainActivity.this, Usuario.class);
+        Intent intent = new Intent(MainActivity.this, RegistroUsuario.class);
         startActivity(intent);
     }
 
     public void startMedico(View v) {
-        Intent intent = new Intent(MainActivity.this, Medico.class);
+        Intent intent = new Intent(MainActivity.this, RegistroMedico.class);
         startActivity(intent);
     }
-
 }
